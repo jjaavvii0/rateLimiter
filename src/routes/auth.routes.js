@@ -1,4 +1,3 @@
-//ENDPOINTS DE LOGIN Y REGISTRO
 import {Router} from "express"
 const router = Router()
 

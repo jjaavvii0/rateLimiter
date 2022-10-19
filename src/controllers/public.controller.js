@@ -1,3 +1,3 @@
 export const getPublic = async (req, res) => {
-    res.status(200).json("OK");
+    res.status(200).json("We hit getPublic route");
 }

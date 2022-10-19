@@ -21,7 +21,7 @@ export const checkLimit = async (req, res, next) =>{
                     data.count++;
                     return res.status(429).json({
                         "error": 1, 
-                        "message": "Limit reached, wait till " + moment().add(1, 'hours').format('MMMM Do YYYY, h a')
+                        "message": "Limit reached, wait till '" + moment().add(1, 'hours').format('MMMM Do YYYY, ha') + "' to make a new request."
                     })
                 }
                 console.log(data)

@@ -8,7 +8,7 @@ const client = redis.createClient({
 })
 
 client.on('connect', function () {
-    console.log('Connected to REDIS');
+    console.log(process.pid + ': Connected to REDIS');
 });
 
 

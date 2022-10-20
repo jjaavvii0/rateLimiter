@@ -2,9 +2,10 @@ import {Router} from "express"
 const router = Router()
 
 import * as publicCtrl from "../controllers/public.controller" 
-import * as rateLimitByIP from "../middlewares/rateLimitByIP"
+import * as rateLimit from "../middlewares/rateLimit"
 
-router.get("/", rateLimitByIP.checkLimit, publicCtrl.getPublic)
+
+router.get("/", rateLimit.checkLimit("IP"), publicCtrl.getPublic)
 
 
 

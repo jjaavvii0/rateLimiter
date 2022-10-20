@@ -1,13 +1,16 @@
 const moment = require('moment')
 
-
+// const TYPE_OF_LIMITS = {
+//     'TOKEN' : process.env.RATE_LIMIT_BY_TOKEN,
+//     'IP' : process.env.RATE_LIMIT_BY_ID
+// }
 
 function actualDateEqualStoragedDate(storagedData){  
     if(!(storagedData == moment().format('MMMM Do YYYY, h a'))) return false
 }
 
 function isLimitReached(storagedCount, type){ 
-    const typeOfLimit =  type==0 ? process.env.RATE_LIMIT_BY_TOKEN : process.env.RATE_LIMIT_BY_ID;
+    const typeOfLimit =  type=="TOKEN" ? process.env.RATE_LIMIT_BY_TOKEN : process.env.RATE_LIMIT_BY_ID;
     if(storagedCount >= typeOfLimit) return true
 }
 

@@ -1,5 +1,5 @@
 import {client, redlock} from "../databases/redis.db"
-import {dataCreator} from "../helpers/dateComparer" 
+import {dataCreator} from "../helpers/limitsHelper" 
 const moment = require('moment')
 
 export const checkLimit = async (req, res, next) =>{

@@ -1,10 +1,10 @@
-const moment = require('moment')
+import moment from 'moment'
 
 function isTheNextHour(storagedData){  
     if(!(storagedData == moment().format('MMMM Do YYYY, h a'))) return true
 }
 function isLimitReached(storagedCount, type){ 
-    const typeOfLimit =  type=="TOKEN" ? process.env.RATE_LIMIT_BY_TOKEN : process.env.RATE_LIMIT_BY_ID;
+    const typeOfLimit =  type=="TOKEN" ? process.env.RATE_LIMIT_BY_TOKEN : process.env.RATE_LIMIT_BY_IP;
     if(storagedCount >= typeOfLimit) return true
 }
 

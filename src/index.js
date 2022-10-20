@@ -1,14 +1,15 @@
+require('dotenv').config()
+
 import app from "./app"
 import "./databases/mongo.db"
 import "./databases/redis.db"
+import cluster from 'cluster'
 
-require('dotenv').config()
-const cluster = require('cluster');
 const numCPUs = require('os').cpus().length;
 const PORT = process.env.PORT || 3000;
 
 
-if (cluster.isMaster){
+if (cluster.isPrimary){
     console.log("Master cluster ONLINE WITH PID: " + process.pid)
     for (var i = 0; i < numCPUs; i++){
         cluster.fork();

@@ -5,8 +5,9 @@ const moment = require('moment')
 //     'IP' : process.env.RATE_LIMIT_BY_ID
 // }
 
-function actualDateEqualStoragedDate(storagedData){  
-    if(!(storagedData == moment().format('MMMM Do YYYY, h a'))) return false
+function isTheNextHour(storagedData){  
+    //Si lo que te mando por
+    if(!(storagedData == moment().format('MMMM Do YYYY, h a'))) return true
 }
 
 function isLimitReached(storagedCount, type){ 
@@ -22,9 +23,11 @@ export function dataCreator (storagedData, typeOfLimit){
         }
         return newUserData;
     }
-    if (actualDateEqualStoragedDate(storagedData.startTime)){
+    if (isTheNextHour(storagedData.startTime)){
         storagedData.startTime = moment().format('MMMM Do YYYY, h a');
         storagedData.count = 1;
+        return storagedData
+
     }
 
     if(isLimitReached(storagedData.count, typeOfLimit)){

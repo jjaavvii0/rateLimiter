@@ -1,4 +1,6 @@
 import redis from 'ioredis'
+import Redlock from "redlock";
+
 
 const client = redis.createClient({
     port: process.env.REDIS_PORT || 6379,
@@ -10,4 +12,15 @@ client.on('connect', function () {
 });
 
 
-export default client
+ 
+const redlock = new Redlock(
+    [client],
+    {
+        driftFactor: 0.01,
+        retryCount:  -1,
+        retryDelay:  200,
+        retryJitter:  200
+    }
+)
+
+export {client, redlock};

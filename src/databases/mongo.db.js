@@ -1,6 +1,6 @@
 import mongoose from "mongoose"
 
-mongoose.connect(process.env.DB_MONGO_URI || "mongodb://localhost/usersOutvio", {
+mongoose.connect(process.env.DB_MONGO_URI || "mongodb://127.0.0.1/usersOutvio", {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })

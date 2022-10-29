@@ -11,8 +11,6 @@ client.on('connect', function () {
     console.log(process.pid + ': Connected to REDIS');
 });
 
-
- 
 const redlock = new Redlock(
     [client],
     {
@@ -22,5 +20,5 @@ const redlock = new Redlock(
         retryJitter:  200
     }
 )
+export {client as redisClient, redlock};
 
-export {client, redlock};

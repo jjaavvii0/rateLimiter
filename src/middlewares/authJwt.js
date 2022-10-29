@@ -5,16 +5,16 @@ export const verifyToken = async (req, res, next) =>{
     try {
         const token = req.headers["x-access-token"];
 
-        if(!token) return res.status(403).json({message: "You should send a token"})
+        if(!token) return res.status(403).json({message: "Token not found"})
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET)
         req.userId = decoded.id;
 
         const user = await User.findById(req.userId)
-        if(!user) return res.status(404).json({message: "No user found"});
+        if(!user) return res.status(404).json({message: "User not found"});
 
         next()    
     } catch (error) {
-        return res.status(401).json({message: "No autorized"})   
+        return res.status(401).json({message: "No authorized"})   
     }
 }
